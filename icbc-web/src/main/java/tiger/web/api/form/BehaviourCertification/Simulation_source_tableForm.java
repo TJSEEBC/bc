@@ -15,11 +15,10 @@ import java.util.Date;
  */
 public class Simulation_source_tableForm implements FormInterface {
 
-   @NotNull(message = "名字不能为空")
+
     private String tranOutCardNum;
     private String timeStamp;
     private Integer user;
-    @NotNull(message = "金额不能为空")
     private BigDecimal txAmt;
     private String tranInAcctNum;
     private String jnlSeqNum;

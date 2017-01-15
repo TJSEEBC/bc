@@ -7,6 +7,7 @@ import tiger.web.api.form.BaseForm;
 import tiger.web.api.form.FormInterface;
 
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -19,7 +20,7 @@ public class Simulation_source_tableForm implements FormInterface {
     private String timeStamp;
     private Integer user;
     @NotNull(message = "金额不能为空")
-    private float txAmt;
+    private BigDecimal txAmt;
     private String tranInAcctNum;
     private String jnlSeqNum;
     private Date eventDt;
@@ -51,11 +52,11 @@ public class Simulation_source_tableForm implements FormInterface {
         this.user = user;
     }
 
-    public float getTxAmt() {
+    public BigDecimal getTxAmt() {
         return txAmt;
     }
 
-    public void setTxAmt(float txAmt) {
+    public void setTxAmt(BigDecimal txAmt) {
         this.txAmt = txAmt;
     }
 

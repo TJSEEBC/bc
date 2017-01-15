@@ -30,39 +30,34 @@ import java.io.IOException;
 public class behaviourCertificationController extends BaseController {
     @Autowired
     Simulation_source_tableManager simulationsourcetableManager;
-
-
+@Autowired
+    BehaviorCertificateManager behaviorCertificateManager;
     @RequestMapping(value = "/judge", method = RequestMethod.POST)
     @ResponseBody
     public BaseResult<Boolean> insertNames(@RequestBody @Valid Simulation_source_tableForm simulationsourcetableForm, BindingResult bindingResult) {
             //给张裕威的接口
+        Simulation_source_table simulation_source_table;
+        Boolean judge_result = null;
 
         Simulation_source_tableDomain simulation_source_tableDomain = simulationsourcetableForm.convert2Domain();
-        Simulation_source_table simulation_source_table;
-
-
         simulation_source_table = Simulation_source_tableConvert.convert2DO(simulation_source_tableDomain);
+        System.out.print("我是分隔符----------\n");
+        System.out.print(simulationsourcetableForm.getTxAmt());
+        System.out.print("我是分隔符----------\n");
+        System.out.print(simulation_source_table.getTxAmt());
 
-
-        BehaviorCertificateManager behaviorCertificateManager = new BehaviorCertificateManagerImpl();
+        simulationsourcetableManager.insert(simulation_source_tableDomain);
 
         try{
-                behaviorCertificateManager.behaviorCertificate(simulation_source_table);
+            judge_result  = behaviorCertificateManager.behaviorCertificate(simulation_source_table);
         }
         catch (IOException e){
             e.printStackTrace();
         }
 
+        return new BaseResult<>(judge_result);
 
 
-
-            System.out.print( simulation_source_tableDomain.getEventDt());
-        return new BaseResult<>(simulationsourcetableManager.insert(simulation_source_tableDomain));
-
-
-      /*  Simulation_source_tableDomain simulation_source_tableDomain = simulationsourcetableForm.convert2Domain();
-        System.out.print( simulation_source_tableDomain.getEventDt());
-        return new BaseResult<>(simulationsourcetableManager.insert(simulation_source_tableDomain));*/
         }
 
     }

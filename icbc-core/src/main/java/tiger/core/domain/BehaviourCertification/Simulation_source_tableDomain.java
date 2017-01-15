@@ -3,6 +3,7 @@ package tiger.core.domain.BehaviourCertification;
 import tiger.core.domain.BaseDomain;
 
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ public class Simulation_source_tableDomain extends BaseDomain {
     private String tranOutCardNum;
     private String timeStamp;
     private Integer user;
-    private float txAmt;
+    private BigDecimal txAmt;
     private String tranInAcctNum;
     private String jnlSeqNum;
     private Date eventDt;
@@ -44,11 +45,11 @@ public class Simulation_source_tableDomain extends BaseDomain {
         this.user = user;
     }
 
-    public float getTxAmt() {
+    public BigDecimal getTxAmt() {
         return txAmt;
     }
 
-    public void setTxAmt(float txAmt) {
+    public void setTxAmt(BigDecimal txAmt) {
         this.txAmt = txAmt;
     }
 

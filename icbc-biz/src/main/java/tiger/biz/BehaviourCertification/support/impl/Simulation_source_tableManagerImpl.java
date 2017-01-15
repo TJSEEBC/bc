@@ -23,13 +23,8 @@ public class Simulation_source_tableManagerImpl implements Simulation_source_tab
     @Override
     public Boolean insert(Simulation_source_tableDomain simulation_source_tableDomain) {
 
-//      //  boolean mark = true;
-//        /*for (int i = 1; i < names.length; i++) {
-//            WangshuoInfoDomain temp = new WangshuoInfoDomain();
-//
-//            mark = mark &&  wangShuoService.insert(WangshuoInfoConvert.convert2DO(temp));
-//        }*/
-//        return simulation_source_tableService.insert(Simulation_source_tableConvert.convert2DO(simulation_source_tableDomain));
-        return false;
+
+        return simulation_source_tableService.insert(Simulation_source_tableConvert.convert2DO(simulation_source_tableDomain));
+      /*  return false;*/
     }
 }

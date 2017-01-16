@@ -26,19 +26,19 @@ import java.util.*;
 public class BehaviorCertificateManagerImpl implements BehaviorCertificateManager {
 
     @Autowired
-    private Simulation_source_tableMapper simulationSourceDao;
+    Simulation_source_tableMapper simulationSourceDao;
 
     @Autowired
-    private Behavior_certificate_tableMapper behaviorCertificateDao;
+    Behavior_certificate_tableMapper behaviorCertificateDao;
 
     @Autowired
-    private All_location_tableMapper allLocationTableMapper;
+    All_location_tableMapper allLocationTableMapper;
 
     @Autowired
-    private Card_tableMapper cardDao;
+    Card_tableMapper cardDao;
 
     @Autowired
-    private Assist_tableMapper assistDao;
+    Assist_tableMapper assistDao;
 
     /**
      * //@param 用户ID
@@ -46,6 +46,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
      * @throws ParseException
      *
      */
+    @Override
     public float[] calcWeekendProbabilty(int userId){
         try {
 //            List<Simulation_source_table> simulationSources = simulationSourceDao.getSimulationSourceByuser(userId);
@@ -78,6 +79,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
      * @return float[0] 落在平时的概率 float[1] 落在节日的概率
      *
      */
+    @Override
     public float[] calcFestivalProbabilty(int userId) {
         Simulation_source_tableExample example = new Simulation_source_tableExample();
         Simulation_source_tableExample.Criteria criteria = example.createCriteria();
@@ -97,7 +99,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
         probabilty[0] = 1 - probabilty[1];
         return probabilty;
     }
-
+    @Override
     public float[] calcTimeIntervalProbabilty(int userId) {
         // 获得相邻时间的时间间隔
         try {
@@ -157,6 +159,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
      * 计算信息熵
      *
      */
+    @Override
     public float calcLocationInformationEntropy(int userId) {
         Simulation_source_tableExample example = new Simulation_source_tableExample();
         Simulation_source_tableExample.Criteria criteria = example.createCriteria();
@@ -205,7 +208,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
         System.out.println(max);
         return StatisticsUtility.calcInformationEntropy(pl,max);
     }
-
+    @Override
     public float[] calcBalanceIntervalProbabilty(int userId) {
         // 得到一个升序的金钱列表
         Simulation_source_tableExample example = new Simulation_source_tableExample();
@@ -255,6 +258,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
      * 生成行为证书
      *
      */
+    @Override
     public void addNewBehaviorCertificate(int userId) {
 
         Behavior_certificate_table behaviorCertificate;
@@ -323,6 +327,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
     // 判断是否曾经给转入卡号转账过
 
     // 获得用户交易时间在工作日或者非工作日的概率
+    @Override
     public float getWeekProbabilty(Simulation_source_table simulationsource) {
 
         Behavior_certificate_tableExample example = new Behavior_certificate_tableExample();
@@ -343,6 +348,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
         return week_probability/max;
     }
     // 获得用户交易时间在节假日或非节假日的概率
+    @Override
     public float getFestivalProbabilty(Simulation_source_table simulationsource) {
 
 
@@ -477,7 +483,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
             simulationsource.setPredicationResult(true);
             Simulation_source_tableExample example = new Simulation_source_tableExample();
             Simulation_source_tableExample.Criteria criteria = example.createCriteria();
-             simulationSourceDao.updateByExample(simulationsource,example);
+             //simulationSourceDao.updateByExample(simulationsource,example);
            // simulationSourceDao.updateSim(simulationsource);
             File file=new File("D:/1.txt");
             FileWriter fileWriter=new FileWriter(file,true);
@@ -534,11 +540,12 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
         else
             simulationsource.setPredicationResult(false);
         DecimalFormat df = new DecimalFormat("#.0000");
-
+        System.out.println("*****************************************");
         simulationsource.setPredicationResult(true);
         Simulation_source_tableExample example1 = new Simulation_source_tableExample();
         Simulation_source_tableExample.Criteria criteria1 = example1.createCriteria();
-        simulationSourceDao.updateByExample(simulationsource,example1);
+        //simulationSourceDao.updateByExample(simulationsource,example1);
+        System.out.println("*****************************************222222222222222222222222222222");
         File file=new File("D:/1.txt");
         FileWriter fileWriter=new FileWriter(file,true);
         BufferedWriter writer=new BufferedWriter(fileWriter);
@@ -559,6 +566,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
         List<Card_table> TICN=cardDao.selectByExample(example);
         boolean pass = false;
         for (int i = 0; i < TICN.size(); i++) {
+            //System.out.println(TICN.get(i).getTicn());
             if (simulation_source_table.getTranInAcctNum().equals(TICN.get(i).getTicn())) {
                 pass = true;
             }

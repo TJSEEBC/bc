@@ -2,7 +2,10 @@ package tiger.core.domain.BehaviourCertification;
 
 import tiger.core.domain.BaseDomain;
 
+//<<<<<<< Updated upstream
 import javax.validation.constraints.NotNull;
+//=======
+//>>>>>>> Stashed changes
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -11,7 +14,7 @@ import java.util.Date;
  */
 public class Simulation_source_tableDomain extends BaseDomain {
     private String tranOutCardNum;
-    private String timeStamp;
+    private Date timeStamp;
     private Integer user;
     private BigDecimal txAmt;
     private String tranInAcctNum;
@@ -29,11 +32,11 @@ public class Simulation_source_tableDomain extends BaseDomain {
         this.tranOutCardNum = tranOutCardNum;
     }
 
-    public String getTimeStamp() {
+    public Date getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(String timeStamp) {
+    public void setTimeStamp(Date timeStamp) {
         this.timeStamp = timeStamp;
     }
 

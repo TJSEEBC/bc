@@ -572,6 +572,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
         criteria.andUserEqualTo(simulation_source_table.getUser());
         List<Card_table> TICN=cardDao.selectByExample(example);
         boolean pass = false;
+        System.out.println("这里：TICN"+TICN);
         for (int i = 0; i < TICN.size(); i++) {
             //System.out.println(TICN.get(i).getTicn());
             if (simulation_source_table.getTranInAcctNum().equals(TICN.get(i).getTicn())) {

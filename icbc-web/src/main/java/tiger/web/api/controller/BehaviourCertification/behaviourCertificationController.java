@@ -82,54 +82,36 @@ public class behaviourCertificationController extends BaseController {
         Simulation_source_table simulation_source_table;
         Boolean judge_result = null;
 
-//<<<<<<< Updated upstream
-        // Simulation_source_tableDomain simulation_source_tableDomain = simulationsourcetableForm.convert2Domain();
-        //   simulation_source_table = Simulation_source_tableConvert.convert2DO(simulation_source_tableDomain);
 
-
-        System.out.print(simulationsourcetableForm.getUser());
 
         Integer user = simulationsourcetableForm.getUser();
         String timeStampString = simulationsourcetableForm.getTimeStamp();
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
         /**
          * 时间转换，String转Date
          */
 
         Date timeStampDate = null;
-//
+
         try {
             timeStampDate = sdf.parse(timeStampString);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-////=======
-//        simulation_source_table = Simulation_source_tableConvert.convert2DO(simulation_source_tableDomain);
-//        System.out.println(simulation_source_table);
-//        System.out.println(simulation_source_table.getUser());
-//        System.out.println(simulation_source_table.getTxAmt());
-//        System.out.println(simulation_source_table.getTimeStamp());
-//        System.out.println(simulation_source_table.getTranInAcctNum());
-//        System.out.println(simulation_source_table.getTranOutCardNum());
-//        System.out.println(simulation_source_table.getJnlSeqNum());
-//        System.out.println(simulation_source_table.getEventDt());
-//        System.out.println(simulation_source_table.getLable());
-//        System.out.println(simulation_source_table.getZoneNum());
-//        System.out.println(simulation_source_table.getPredicationResult());
-//        try{
-//                behaviorCertificateManager.behaviorCertificate(simulation_source_table);
-//        }
-//        catch (IOException e){
-////>>>>>>> Stashed changes
-//            e.printStackTrace();
-//        }
 
 
             Simulation_source_tableKey simulationSourceTableKey = new Simulation_source_tableKey();
             simulationSourceTableKey.setUser(user);
             simulationSourceTableKey.setTimeStamp(timeStampDate);
+
+
+
+            System.out.println(simulationSourceTableKey.getUser()+":::"+simulationSourceTableKey.getTimeStamp());
+
+
 
             Simulation_source_table getRecordByPrimaryKey = simulationSourceTableMapper.selectByPrimaryKey(simulationSourceTableKey);
             simulation_source_table = getRecordByPrimaryKey;
@@ -137,10 +119,7 @@ public class behaviourCertificationController extends BaseController {
 
 
             System.out.print("我是分隔符----------\n");
-      //      System.out.print(simulationsourcetableForm.getTxAmt());
-
             System.out.print("我是分隔符----------\n");
-            //System.out.print(simulation_source_table.getTxAmt());
 
 
             /**

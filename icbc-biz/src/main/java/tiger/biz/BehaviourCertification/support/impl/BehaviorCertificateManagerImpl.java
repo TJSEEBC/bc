@@ -490,15 +490,19 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
             simulationSourceDao.updateByExample(simulationsource,example);
 
            // simulationSourceDao.updateSim(simulationsource);
+            /*
+            写到本地文件，做记录。
             File file=new File("D:/1.txt");
             FileWriter fileWriter=new FileWriter(file,true);
             BufferedWriter writer=new BufferedWriter(fileWriter);
+
             System.out.println("风险值：0.0");
             String ris="风险值：0.0";
             writer.append(ris);
             writer.newLine();
             writer.flush();
             writer.close();
+            */
             return true;
         }
 

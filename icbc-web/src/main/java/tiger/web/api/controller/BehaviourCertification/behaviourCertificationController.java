@@ -75,7 +75,7 @@ public class behaviourCertificationController extends BaseController {
     @RequestMapping(value = "/judge", method = RequestMethod.POST)
 
     @ResponseBody
-    public BaseResult<Boolean> insertNames(@RequestBody @Valid Simulation_source_tableForm simulationsourcetableForm, BindingResult bindingResult) {
+    public Boolean insertNames(@RequestBody @Valid Simulation_source_tableForm simulationsourcetableForm, BindingResult bindingResult) {
         //给张裕威的接口
         Simulation_source_table simulation_source_table;
         Boolean judge_result = null;
@@ -136,7 +136,7 @@ public class behaviourCertificationController extends BaseController {
 
             System.out.print("我是分隔符----------\n");
             System.out.print(simulationsourcetableForm.getTxAmt());
-        System.out.println(simulation_source_table.getTxAmt());
+
             System.out.print("我是分隔符----------\n");
             //System.out.print(simulation_source_table.getTxAmt());
 
@@ -153,9 +153,9 @@ public class behaviourCertificationController extends BaseController {
                 e.printStackTrace();
             }
 
-            return new BaseResult<>(judge_result);
+            //return new BaseResult<>(judge_result);
 
-
+            return  judge_result;
         }
 
 
@@ -163,8 +163,3 @@ public class behaviourCertificationController extends BaseController {
     }
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> aeeb00a25c727e32e7cac1364f3c40fed01f0703

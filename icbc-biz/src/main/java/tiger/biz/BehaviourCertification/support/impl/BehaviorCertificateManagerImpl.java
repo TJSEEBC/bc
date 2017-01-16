@@ -484,11 +484,11 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
             Simulation_source_tableExample example = new Simulation_source_tableExample();
             Simulation_source_tableExample.Criteria criteria = example.createCriteria();
             criteria.andUserEqualTo(simulationsource.getUser()).andTimeStampEqualTo(simulationsource.getTimeStamp());
-<<<<<<< HEAD
+
             simulationSourceDao.updateByExample(simulationsource,example);
-=======
-             simulationSourceDao.updateByExample(simulationsource,example);
->>>>>>> aeeb00a25c727e32e7cac1364f3c40fed01f0703
+
+            simulationSourceDao.updateByExample(simulationsource,example);
+
            // simulationSourceDao.updateSim(simulationsource);
             File file=new File("D:/1.txt");
             FileWriter fileWriter=new FileWriter(file,true);
@@ -549,10 +549,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
         simulationsource.setPredicationResult(true);
         Simulation_source_tableExample example1 = new Simulation_source_tableExample();
         Simulation_source_tableExample.Criteria criteria1 = example1.createCriteria();
-<<<<<<< HEAD
 
-=======
->>>>>>> aeeb00a25c727e32e7cac1364f3c40fed01f0703
         criteria1.andUserEqualTo(simulationsource.getUser()).andTimeStampEqualTo(simulationsource.getTimeStamp());
         simulationSourceDao.updateByExample(simulationsource,example1);
         System.out.println("*****************************************222222222222222222222222222222");

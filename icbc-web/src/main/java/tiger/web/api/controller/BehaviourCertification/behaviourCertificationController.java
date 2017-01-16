@@ -11,8 +11,10 @@ import tiger.common.dal.persistence.behaviour_authen.Simulation_source_tableExam
 import tiger.common.dal.persistence.behaviour_authen.Simulation_source_tableKey;
 import tiger.common.dal.persistence.mapper.Simulation_source_tableMapper;
 import tiger.core.basic.BaseResult;
+import tiger.core.basic.PageResult;
 import tiger.core.domain.BehaviourCertification.Simulation_source_tableDomain;
 import tiger.core.domain.BehaviourCertification.convert.Simulation_source_tableConvert;
+import tiger.core.domain.materials.MaterialsDomain;
 import tiger.web.api.constants.APIConstants;
 import tiger.web.api.controller.BaseController;
 import tiger.web.api.form.BehaviourCertification.Simulation_source_tableForm;
@@ -22,6 +24,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by 王硕买个大葱头 on 2017/1/12.
@@ -43,7 +46,31 @@ public class behaviourCertificationController extends BaseController {
     @Autowired
     Simulation_source_tableMapper simulationSourceTableMapper;
 
+    /*
+
+    @RequestMapping(value = "/SelectRecordBewteenTimeRange", method = RequestMethod.POST)
+    @ResponseBody
+    public PageResult<List<Simulation_source_table>> selectRecord(@RequestHeader  Simulation_source_tableForm simulationsourcetableForm, BindingResult bindingResult){
+
+      //header里面怎么传，明天问学长
+        Simulation_source_table simulation_source_table=null;
+        Boolean judge_result = null;
+
+
+
+        try{
+            judge_result  = behaviorCertificateManager.behaviorCertificate(simulation_source_table);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return new BaseResult<>(judge_result);
+    }
+*/
+
     @RequestMapping(value = "/judge", method = RequestMethod.POST)
+
     @ResponseBody
     public BaseResult<Boolean> insertNames(@RequestBody @Valid Simulation_source_tableForm simulationsourcetableForm, BindingResult bindingResult) {
             //给张裕威的接口
@@ -111,7 +138,10 @@ public class behaviourCertificationController extends BaseController {
 
         }
 
+
+
     }
+
 
 
 

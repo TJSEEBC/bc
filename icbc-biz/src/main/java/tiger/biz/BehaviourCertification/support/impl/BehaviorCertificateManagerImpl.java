@@ -477,7 +477,8 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
             simulationsource.setPredicationResult(true);
             Simulation_source_tableExample example = new Simulation_source_tableExample();
             Simulation_source_tableExample.Criteria criteria = example.createCriteria();
-             simulationSourceDao.updateByExample(simulationsource,example);
+            criteria.andUserEqualTo(simulationsource.getUser()).andTimeStampEqualTo(simulationsource.getTimeStamp());
+            simulationSourceDao.updateByExample(simulationsource,example);
            // simulationSourceDao.updateSim(simulationsource);
             File file=new File("D:/1.txt");
             FileWriter fileWriter=new FileWriter(file,true);
@@ -538,6 +539,8 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
         simulationsource.setPredicationResult(true);
         Simulation_source_tableExample example1 = new Simulation_source_tableExample();
         Simulation_source_tableExample.Criteria criteria1 = example1.createCriteria();
+
+        criteria1.andUserEqualTo(simulationsource.getUser()).andTimeStampEqualTo(simulationsource.getTimeStamp());
         simulationSourceDao.updateByExample(simulationsource,example1);
         File file=new File("D:/1.txt");
         FileWriter fileWriter=new FileWriter(file,true);

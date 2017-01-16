@@ -1,5 +1,6 @@
 package tiger.web.api.controller.BehaviourCertification;
 
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -49,14 +50,14 @@ public class behaviourCertificationController extends BaseController {
 //=======
 //>>>>>>> Stashed changes
 
+
     /*
 
     @RequestMapping(value = "/SelectRecordBewteenTimeRange", method = RequestMethod.POST)
     @ResponseBody
-    public PageResult<List<Simulation_source_table>> selectRecord(@RequestHeader  Simulation_source_tableForm simulationsourcetableForm, BindingResult bindingResult){
+    public PageResult<List<Simulation_source_table>> selectRecord(@Parameter() String time1 ,@Parameter() String time2){
 
-      //header里面怎么传，明天问学长
-        Simulation_source_table simulation_source_table=null;
+
         Boolean judge_result = null;
 
 
@@ -70,10 +71,11 @@ public class behaviourCertificationController extends BaseController {
 
         return new BaseResult<>(judge_result);
     }
-*/
+
+    */
+
 
     @RequestMapping(value = "/judge", method = RequestMethod.POST)
-
     @ResponseBody
     public Boolean insertNames(@RequestBody @Valid Simulation_source_tableForm simulationsourcetableForm, BindingResult bindingResult) {
         //给张裕威的接口
@@ -131,11 +133,11 @@ public class behaviourCertificationController extends BaseController {
 
             Simulation_source_table getRecordByPrimaryKey = simulationSourceTableMapper.selectByPrimaryKey(simulationSourceTableKey);
             simulation_source_table = getRecordByPrimaryKey;
-            System.out.println("*****" + getRecordByPrimaryKey + "*****");
+            System.out.println("*****别null啊大哥" + getRecordByPrimaryKey + "*****");
 
 
             System.out.print("我是分隔符----------\n");
-            System.out.print(simulationsourcetableForm.getTxAmt());
+      //      System.out.print(simulationsourcetableForm.getTxAmt());
 
             System.out.print("我是分隔符----------\n");
             //System.out.print(simulation_source_table.getTxAmt());

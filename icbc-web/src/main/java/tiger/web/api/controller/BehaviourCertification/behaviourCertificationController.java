@@ -51,28 +51,23 @@ public class behaviourCertificationController extends BaseController {
 //>>>>>>> Stashed changes
 
 
-    /*
 
-    @RequestMapping(value = "/SelectRecordBewteenTimeRange", method = RequestMethod.POST)
+
+
+    @RequestMapping(value = "/SelectRecordById", method = RequestMethod.POST)
     @ResponseBody
-    public PageResult<List<Simulation_source_table>> selectRecord(@Parameter() String time1 ,@Parameter() String time2){
+    public PageResult<List<Simulation_source_table>> selectRecord(@RequestParam("id") Integer id ){
 
 
-        Boolean judge_result = null;
+        Simulation_source_tableExample example = new Simulation_source_tableExample();
+        Simulation_source_tableExample.Criteria criteria = example.createCriteria();
+        criteria.andUserEqualTo(id);
+        List<Simulation_source_table> recordList = simulationSourceTableMapper.selectByExample(example);
 
-
-
-        try{
-            judge_result  = behaviorCertificateManager.behaviorCertificate(simulation_source_table);
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-
-        return new BaseResult<>(judge_result);
+        return new PageResult<List<Simulation_source_table>>(recordList);
     }
 
-    */
+
 
 
     @RequestMapping(value = "/judge", method = RequestMethod.POST)

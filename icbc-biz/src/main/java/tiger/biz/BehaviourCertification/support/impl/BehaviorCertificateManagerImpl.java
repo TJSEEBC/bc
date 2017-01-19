@@ -557,6 +557,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
         criteria1.andUserEqualTo(simulationsource.getUser()).andTimeStampEqualTo(simulationsource.getTimeStamp());
         simulationSourceDao.updateByExample(simulationsource,example1);
         System.out.println("*****************************************222222222222222222222222222222");
+        /*
         File file=new File("D:/1.txt");
         FileWriter fileWriter=new FileWriter(file,true);
         BufferedWriter writer=new BufferedWriter(fileWriter);
@@ -568,6 +569,7 @@ public class BehaviorCertificateManagerImpl implements BehaviorCertificateManage
         writer.newLine();
         writer.flush();
         writer.close();
+        */
         return pass;
     }
     public boolean tranBefore(Simulation_source_table simulation_source_table) {

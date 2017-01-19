@@ -112,7 +112,7 @@ public class Simulation_source_tableForm implements FormInterface {
         public Simulation_source_tableDomain convert2Domain() {
 
         Simulation_source_tableDomain target = new Simulation_source_tableDomain();
-            BeanUtil.copyPropertiesWithIgnores(this, target);
+        BeanUtil.copyPropertiesWithIgnores(this, target);
 
             return target;
         }
